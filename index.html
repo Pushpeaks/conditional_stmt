@@ -191,7 +191,7 @@ slides:
                     <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
-                            <button onclick="copyCode('bug-slide-2')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                            <button onclick="loadBuggyCode('slide-2', 'bug-slide-2')" class="bg-red-500 hover:bg-red-600 text-white font-bold text-xs px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Load Buggy Code into IDE 🚀</button>
                         </div>
                         <pre id="bug-slide-2" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
 #include &lt;stdio.h&gt;
@@ -281,7 +281,7 @@ int main() {
                     <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
-                            <button onclick="copyCode('bug-slide-3')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                            <button onclick="loadBuggyCode('slide-3', 'bug-slide-3')" class="bg-red-500 hover:bg-red-600 text-white font-bold text-xs px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Load Buggy Code into IDE 🚀</button>
                         </div>
                         <pre id="bug-slide-3" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
 #include &lt;stdio.h&gt;
@@ -353,7 +353,7 @@ int main() {
                     <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
-                            <button onclick="copyCode('bug-slide-4')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                            <button onclick="loadBuggyCode('slide-4', 'bug-slide-4')" class="bg-red-500 hover:bg-red-600 text-white font-bold text-xs px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Load Buggy Code into IDE 🚀</button>
                         </div>
                         <pre id="bug-slide-4" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
 #include &lt;stdio.h&gt;
@@ -440,7 +440,7 @@ int main() {
                     <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
-                            <button onclick="copyCode('bug-slide-5')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                            <button onclick="loadBuggyCode('slide-5', 'bug-slide-5')" class="bg-red-500 hover:bg-red-600 text-white font-bold text-xs px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Load Buggy Code into IDE 🚀</button>
                         </div>
                         <pre id="bug-slide-5" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
 #include &lt;stdio.h&gt;
@@ -525,7 +525,7 @@ int main() {
                     <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
-                            <button onclick="copyCode('bug-slide-6')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                            <button onclick="loadBuggyCode('slide-6', 'bug-slide-6')" class="bg-red-500 hover:bg-red-600 text-white font-bold text-xs px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Load Buggy Code into IDE 🚀</button>
                         </div>
                         <pre id="bug-slide-6" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
 #include &lt;stdio.h&gt;
@@ -592,7 +592,7 @@ int main() {
                     <div class="mt-2 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
-                            <button onclick="copyCode('bug-slide-7')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                            <button onclick="loadBuggyCode('slide-7', 'bug-slide-7')" class="bg-red-500 hover:bg-red-600 text-white font-bold text-xs px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Load Buggy Code into IDE 🚀</button>
                         </div>
                         <pre id="bug-slide-7" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
 #include &lt;stdio.h&gt;
@@ -756,14 +756,33 @@ int main() {
             }
         });
 
-        // Function to copy text to clipboard
-        function copyCode(id) {
-            let codeText = document.getElementById(id).innerText;
-            navigator.clipboard.writeText(codeText).then(() => {
-                alert("Buggy code copied to clipboard! Paste it in the IDE to debug.");
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
+        // Function to load buggy code directly into the iframe
+        function loadBuggyCode(slideId, codeId) {
+            let slide = document.getElementById(slideId);
+            let codeText = document.getElementById(codeId).innerText;
+            let iframe = slide.querySelector('iframe');
+            
+            if (iframe) {
+                // Flash the iframe container to show it's updating
+                iframe.style.opacity = '0.5';
+                setTimeout(() => iframe.style.opacity = '1', 300);
+                
+                let baseUrl = "https://onecompiler.com/embed/c?hideLanguageSelection=true&hideNew=true&code=";
+                iframe.src = baseUrl + encodeURIComponent(codeText);
+                
+                // Show a small notification
+                let btn = slide.querySelector('button[onclick*="loadBuggyCode"]');
+                if (btn) {
+                    let originalText = btn.innerText;
+                    btn.innerText = "Loaded! Scroll down for Run button 👇";
+                    btn.classList.replace("bg-red-500", "bg-green-500");
+                    
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.classList.replace("bg-green-500", "bg-red-500");
+                    }, 4000);
+                }
+            }
         }
     </script>
 </body>
