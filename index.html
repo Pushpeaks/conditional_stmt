@@ -187,6 +187,23 @@ slides:
                                 time! 🍜\n"</span>);</div>
                         <div>&#125;</div>
                     </div>
+                    <!-- Buggy Snippet Copy Section -->
+                    <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
+                            <button onclick="copyCode('bug-slide-2')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                        </div>
+                        <pre id="bug-slide-2" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
+#include &lt;stdio.h&gt;
+int main() {
+    int time = 3;
+    // Bug: Using = instead of ==
+    if (time = 2) {
+        printf("Water boiling... Maggi time! \n");
+    }
+    return 0;
+}</pre>
+                    </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-200 h-full flex flex-col">
                     <div
@@ -260,6 +277,25 @@ slides:
                         </div>
                         <div>&#125;</div>
                     </div>
+                    <!-- Buggy Snippet Copy Section -->
+                    <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
+                            <button onclick="copyCode('bug-slide-3')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                        </div>
+                        <pre id="bug-slide-3" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
+#include &lt;stdio.h&gt;
+int main() {
+    int roommate_sleeping = 1;
+    // Bug: Missing curly braces for multiple statements!
+    if (roommate_sleeping == 1)
+        printf("Headphones on! \n");
+        printf("Don't make noise!\n");
+    else
+        printf("Party time! \n");
+    return 0;
+}</pre>
+                    </div>
                 </div>
             </div>
 
@@ -312,6 +348,26 @@ slides:
                                 🤫\n"</span>);</div>
                         <div class="pl-4">&#125;</div>
                         <div>&#125;</div>
+                    </div>
+                    <!-- Buggy Snippet Copy Section -->
+                    <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
+                            <button onclick="copyCode('bug-slide-4')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                        </div>
+                        <pre id="bug-slide-4" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
+#include &lt;stdio.h&gt;
+int main() {
+    int warden_on_floor = 1;
+    int door_unlocked = 0;
+    // Bug: Dangling else - which if does it belong to?
+    if (warden_on_floor == 1)
+        if (door_unlocked == 1)
+            printf("Hide kettle!! \n");
+    else
+        printf("Coast is clear. Game on! \n");
+    return 0;
+}</pre>
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-red-200 h-full flex flex-col">
@@ -380,6 +436,27 @@ slides:
                         <div class="pl-4 text-rose-300">printf(<span class="text-yellow-200">"Zomato!\n"</span>);</div>
                         <div>&#125;</div>
                     </div>
+                    <!-- Buggy Snippet Copy Section -->
+                    <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
+                            <button onclick="copyCode('bug-slide-5')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                        </div>
+                        <pre id="bug-slide-5" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
+#include &lt;stdio.h&gt;
+int main() {
+    int rating = 9;
+    // Bug: Wrong order of conditions! What happens if rating is 9?
+    if (rating &gt;= 5) {
+        printf("Canteen\n");
+    } else if (rating &gt;= 8) {
+        printf("Mess Food\n");
+    } else {
+        printf("Zomato!\n");
+    }
+    return 0;
+}</pre>
+                    </div>
                 </div>
             </div>
 
@@ -444,6 +521,24 @@ slides:
                     <div class="pl-4 text-rose-300">printf(<span class="text-yellow-200">"Can't make it to class!
                             🏃‍♂️\n"</span>);</div>
                     <div>&#125;</div>
+                    <!-- Buggy Snippet Copy Section -->
+                    <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
+                            <button onclick="copyCode('bug-slide-6')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                        </div>
+                        <pre id="bug-slide-6" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
+#include &lt;stdio.h&gt;
+int main() {
+    int has_proxy = 1;
+    int prof_strict = 0;
+    // Bug: Semicolon right after the if condition!
+    if (has_proxy == 1 &amp;&amp; prof_strict == 0); {
+        printf("Zzzzz... \n");
+    }
+    return 0;
+}</pre>
+                    </div>
                 </div>
             </div>
 
@@ -492,6 +587,28 @@ slides:
                                 class="font-bold">break;</code> or you'll accidentally execute all the cases below it
                             (like paying for chips but getting coffee poured on them)!
                         </p>
+                    </div>
+                    <!-- Buggy Snippet Copy Section -->
+                    <div class="mt-2 bg-red-50 border border-red-200 rounded-xl p-3 relative shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-red-800">🐞 Buggy Code Snippet (For Demo)</span>
+                            <button onclick="copyCode('bug-slide-7')" class="bg-red-200 hover:bg-red-300 text-red-900 font-bold text-xs px-3 py-1 rounded transition-colors">Copy to IDE</button>
+                        </div>
+                        <pre id="bug-slide-7" class="text-xs font-mono text-slate-800 overflow-x-auto bg-white p-2 border border-red-100 rounded">
+#include &lt;stdio.h&gt;
+int main() {
+    int vending_choice = 1;
+    // Bug: Missing break statements!
+    switch (vending_choice) {
+        case 1:
+            printf("Dispensing Chips \n");
+        case 2:
+            printf("Dispensing Red Bull \n");
+        default:
+            printf("Invalid!\n");
+    }
+    return 0;
+}</pre>
                     </div>
                 </div>
             </div>
@@ -638,6 +755,16 @@ slides:
                 prevSlide();
             }
         });
+
+        // Function to copy text to clipboard
+        function copyCode(id) {
+            let codeText = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert("Buggy code copied to clipboard! Paste it in the IDE to debug.");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
     </script>
 </body>
 
