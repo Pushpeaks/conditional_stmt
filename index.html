@@ -1,0 +1,644 @@
+slides:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Magical World of Choices! (Conditional Statements in C)</title>
+    <!-- Tailwind CSS for modern, beautiful styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Quicksand:wght@500;700&display=swap');
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0f4f8;
+            color: #2d3748;
+            overflow: hidden;
+        }
+
+        .fun-font {
+            font-family: 'Comic Neue', cursive, sans-serif;
+        }
+
+        /* Slide Deck Container */
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            width: 95vw;
+            max-width: 1300px;
+            height: 90vh;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .code-box {
+            background-color: #1e293b;
+            color: #38bdf8;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            overflow-x: auto;
+        }
+
+        .nav-btn {
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Custom Scrollbar for Iframes/Code Boxes */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100">
+
+    <div class="slide-container">
+
+        <!-- SLIDE 1: Introduction -->
+        <div class="slide active bg-gradient-to-br from-amber-50 to-orange-50 border-4 border-amber-200" id="slide-1">
+            <div class="flex justify-between items-center border-b-2 border-amber-100 pb-4">
+                <span
+                    class="bg-amber-200 text-amber-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    1 of 9</span>
+                <span class="text-sm font-bold text-amber-600">The Art of Hostel Decisions!</span>
+            </div>
+
+            <div class="my-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-amber-900 fun-font mb-4 leading-tight">
+                        How Do Hostelers Survive? 🤔
+                    </h1>
+                    <p class="text-lg text-slate-700 mb-4 font-medium">
+                        Every day in a hostel is a series of critical, life-saving decisions (also known as logic!).
+                        Your brain constantly asks conditions:
+                    </p>
+                    <ul class="space-y-4 text-slate-700 font-semibold text-lg">
+                        <li
+                            class="flex items-start space-x-3 bg-white p-3 rounded-xl shadow-sm border border-amber-100">
+                            <span class="text-2xl mt-1">🍲</span>
+                            <span><strong class="text-amber-700">If</strong> mess food is "Not Good" <br><span
+                                    class="text-sm text-slate-500">$\rightarrow$ Immediately order Maggi!</span></span>
+                        </li>
+                        <li
+                            class="flex items-start space-x-3 bg-white p-3 rounded-xl shadow-sm border border-amber-100">
+                            <span class="text-2xl mt-1">👮</span>
+                            <span><strong class="text-amber-700">If</strong> the Warden is on rounds <br><span
+                                    class="text-sm text-slate-500">$\rightarrow$ Hide the hot kettle!</span></span>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-2xl shadow-md border-2 border-amber-100 text-center h-full flex flex-col justify-center">
+                    <div class="text-6xl mb-4">💻🤖</div>
+                    <h3 class="text-2xl font-bold text-amber-900 fun-font mb-4">Computers Are Like Freshers!</h3>
+                    <p class="text-md text-slate-600 leading-relaxed">
+                        Computers are super fast but need exact instructions. They need <span
+                            class="bg-amber-100 px-2 py-1 rounded font-bold text-amber-800">Conditional
+                            Statements</span>—our special logic rules—to make smart decisions just like a senior
+                        navigating hostel life!
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-amber-100">
+                <span class="text-xs text-slate-400 font-bold">Use Arrow Keys or Buttons to Navigate</span>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">
+                    Start the Journey 🚀
+                </button>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: The "If" Statement -->
+        <div class="slide bg-gradient-to-br from-blue-50 to-cyan-50 border-4 border-blue-200" id="slide-2">
+            <div class="flex justify-between items-center border-b-2 border-blue-100 pb-4">
+                <span
+                    class="bg-blue-200 text-blue-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    2 of 9</span>
+                <span class="text-sm font-bold text-blue-600">The Simple "If" Statement</span>
+            </div>
+
+            <div class="my-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-blue-900 fun-font mb-4 leading-tight">
+                        The "If" Statement: The Midnight Craving 🍜
+                    </h1>
+                    <p class="text-slate-700 font-medium mb-4 text-lg">
+                        An <code class="bg-blue-100 text-blue-900 px-2 py-0.5 rounded font-bold">if</code> statement is
+                        a simple <span class="text-blue-700 font-bold">Yes/No Question</span>. If the answer is <span
+                            class="text-green-600 font-bold">YES</span> (True), it runs the block of code. If <span
+                            class="text-red-500 font-bold">NO</span> (False), it totally ignores it.
+                    </p>
+                    <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm mb-4">
+                        <p class="text-sm text-slate-600 font-bold mb-2">🌟 Hostel Analogy:</p>
+                        <p class="text-md text-slate-700 italic border-l-4 border-blue-400 pl-3">"<strong>If</strong> it
+                            is 2:00 AM, make Maggi." <br><span class="text-sm text-slate-500">(If it's not 2 AM, just
+                                continue whatever you were doing.)</span></p>
+                    </div>
+                    <div class="code-box text-sm space-y-2 shadow-lg">
+                        <div class="text-slate-400 text-xs">// How the computer reads it in C:</div>
+                        <div><span class="text-purple-400">int</span> time = <span class="text-orange-400">2</span>;
+                            <span class="text-slate-500">// 2 AM!</span>
+                        </div>
+                        <br>
+                        <div><span class="text-pink-400">if</span> (time == <span class="text-orange-400">2</span>)
+                            &#123;</div>
+                        <div class="pl-4 text-emerald-300">printf(<span class="text-yellow-200">"Water boiling... Maggi
+                                time! 🍜\n"</span>);</div>
+                        <div>&#125;</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-blue-200 h-full flex flex-col">
+                    <div
+                        class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
+                        <span>Interactive Compiler (Try changing time!)</span>
+                        <div class="flex space-x-1">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <!-- Using JDoodle Embed for execution -->
+                    <iframe
+                        src="https://onecompiler.com/embed/c?code=//%20Try%20changing%20time%20to%203%0A%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20time%20%3D%202%3B%0A%20%20%20%20%0A%20%20%20%20printf(%22Checking%20the%20clock...%5Cn%22)%3B%0A%20%20%20%20if%20(time%20%3D%3D%202)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Water%20boiling...%20Maggi%20time!%20%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20printf(%22Back%20to%20studying%20(or%20scrolling).%5Cn%22)%3B%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
+                        width="100%" height="100%" style="min-height: 400px; border:0;"></iframe>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-blue-100">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Next
+                    Slide 🚀</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: The "If-Else" Statement -->
+        <div class="slide bg-gradient-to-br from-emerald-50 to-teal-50 border-4 border-emerald-200" id="slide-3">
+            <div class="flex justify-between items-center border-b-2 border-emerald-100 pb-4">
+                <span
+                    class="bg-emerald-200 text-emerald-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    3 of 9</span>
+                <span class="text-sm font-bold text-emerald-600">The "If-Else" Statement</span>
+            </div>
+
+            <div class="my-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4">
+                <div
+                    class="order-2 md:order-1 bg-white rounded-2xl shadow-xl overflow-hidden border border-emerald-200 h-full flex flex-col">
+                    <div
+                        class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
+                        <span>Interactive Compiler (Change roommate status)</span>
+                    </div>
+                    <iframe
+                        src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20roommate_sleeping%20%3D%201%3B%20%2F%2F%201%20is%20True%2C%200%20is%20False%0A%20%20%20%20%0A%20%20%20%20if%20(roommate_sleeping%20%3D%3D%201)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Use%20headphones!%20%F0%9F%8E%A7%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Blast%20the%20speakers!%20%F0%9F%94%8A%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
+                        width="100%" height="100%" style="min-height: 400px; border:0;"></iframe>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-emerald-900 fun-font mb-4 leading-tight">
+                        "If-Else": Plan A or Plan B! 🔀
+                    </h1>
+                    <p class="text-slate-700 font-medium mb-4 text-lg">
+                        Sometimes doing nothing isn't an option. An <code
+                            class="bg-emerald-100 text-emerald-900 px-2 py-0.5 rounded font-bold">else</code> is the
+                        ultimate backup plan. If the condition is True, we do Plan A. If it's False, we automatically
+                        jump to Plan B!
+                    </p>
+                    <div class="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm mb-4">
+                        <p class="text-sm text-slate-600 font-bold mb-2">🌟 Hostel Analogy (Music Rules):</p>
+                        <p class="text-md text-slate-700 italic border-l-4 border-emerald-400 pl-3">"<strong>If</strong>
+                            roommate is sleeping $\rightarrow$ Use headphones! 🎧<br><strong>Else (otherwise)</strong>
+                            $\rightarrow$ Blast the speakers! 🔊"</p>
+                    </div>
+                    <div class="code-box text-sm space-y-2 shadow-lg">
+                        <div><span class="text-pink-400">if</span> (roommate_sleeping == <span
+                                class="text-orange-400">1</span>) &#123;</div>
+                        <div class="pl-4 text-emerald-300">printf(<span class="text-yellow-200">"Headphones on!
+                                🎧\n"</span>);</div>
+                        <div>&#125; <span class="text-pink-400">else</span> &#123;</div>
+                        <div class="pl-4 text-rose-300">printf(<span class="text-yellow-200">"Party time! 🔊\n"</span>);
+                        </div>
+                        <div>&#125;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-emerald-100">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Next
+                    Slide 🚀</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Nested If (NEW) -->
+        <div class="slide bg-gradient-to-br from-red-50 to-orange-50 border-4 border-red-200" id="slide-4">
+            <div class="flex justify-between items-center border-b-2 border-red-100 pb-4">
+                <span
+                    class="bg-red-200 text-red-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    4 of 9</span>
+                <span class="text-sm font-bold text-red-600">The "Nested If" Statement</span>
+            </div>
+
+            <div class="my-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-red-900 fun-font mb-4 leading-tight">
+                        Nested If: The Double Check! 🕵️‍♂️
+                    </h1>
+                    <p class="text-slate-700 font-medium mb-4 text-lg">
+                        Sometimes you need an <code class="font-bold">if</code> inside an <code
+                            class="font-bold">if</code>. We call this a "Nested If". You only check the second condition
+                        if the first one was True!
+                    </p>
+                    <div class="bg-white p-4 rounded-xl border border-red-200 shadow-sm mb-4">
+                        <p class="text-sm text-slate-600 font-bold mb-2">🌟 Hostel Analogy (Contraband Checking):</p>
+                        <p class="text-md text-slate-700 italic border-l-4 border-red-400 pl-3">"<strong>If</strong>
+                            Warden is on the floor: <br> &nbsp;&nbsp; <strong>If</strong> door is unlocked: <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp; -> Hide the iron & kettle! 🚨 <br> &nbsp;&nbsp;
+                            <strong>Else</strong>: <br> &nbsp;&nbsp;&nbsp;&nbsp; -> Keep quiet. 🤫"
+                        </p>
+                    </div>
+                    <div class="code-box text-xs space-y-1 shadow-lg">
+                        <div><span class="text-pink-400">if</span> (warden_on_floor == <span
+                                class="text-orange-400">1</span>) &#123;</div>
+                        <div class="pl-4 text-slate-400">// Inside the first IF block</div>
+                        <div class="pl-4"><span class="text-pink-400">if</span> (door_unlocked == <span
+                                class="text-orange-400">1</span>) &#123;</div>
+                        <div class="pl-8 text-rose-400">printf(<span class="text-yellow-200">"Hide kettle!!
+                                🚨\n"</span>);</div>
+                        <div class="pl-4">&#125; <span class="text-pink-400">else</span> &#123;</div>
+                        <div class="pl-8 text-emerald-300">printf(<span class="text-yellow-200">"We are safe (shh).
+                                🤫\n"</span>);</div>
+                        <div class="pl-4">&#125;</div>
+                        <div>&#125;</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-red-200 h-full flex flex-col">
+                    <div
+                        class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
+                        <span>Interactive Compiler</span>
+                    </div>
+                    <iframe
+                        src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20warden_on_floor%20%3D%201%3B%0A%20%20%20%20int%20door_unlocked%20%3D%201%3B%20%2F%2F%20Try%20changing%20to%200%0A%20%20%20%20%0A%20%20%20%20if%20(warden_on_floor%20%3D%3D%201)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22ALERT%3A%20Warden%20detected!%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20if%20(door_unlocked%20%3D%3D%201)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Hide%20the%20kettle%20and%20iron%20FAST!!%20%F0%9F%9A%A8%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Door%20is%20locked.%20Act%20asleep.%20%F0%9F%A4%AB%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Coast%20is%20clear.%20Game%20on!%20%F0%9F%8E%AE%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
+                        width="100%" height="100%" style="min-height: 400px; border:0;"></iframe>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-red-100">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-red-500 hover:bg-red-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Next
+                    Slide 🚀</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: The Else-If Ladder -->
+        <div class="slide bg-gradient-to-br from-purple-50 to-pink-50 border-4 border-purple-200" id="slide-5">
+            <div class="flex justify-between items-center border-b-2 border-purple-100 pb-4">
+                <span
+                    class="bg-purple-200 text-purple-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    5 of 9</span>
+                <span class="text-sm font-bold text-purple-600">The "Else-If Ladder"</span>
+            </div>
+
+            <div class="my-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4">
+                <div
+                    class="order-2 md:order-1 bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-200 h-full flex flex-col">
+                    <div
+                        class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
+                        <span>Interactive Compiler</span>
+                    </div>
+                    <iframe
+                        src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20mess_menu_rating%20%3D%202%3B%20%2F%2F%2010%20is%20best%2C%201%20is%20worst%0A%20%20%20%20%0A%20%20%20%20if%20(mess_menu_rating%20%3E%3D%208)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Eat%20in%20the%20mess!%20%F0%9F%A5%98%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20if%20(mess_menu_rating%20%3E%3D%205)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Go%20to%20the%20canteen.%20%F0%9F%A5%AA%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Order%20from%20Zomato!%20%F0%9F%9B%B5%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
+                        width="100%" height="100%" style="min-height: 400px; border:0;"></iframe>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-purple-900 fun-font mb-4 leading-tight">
+                        Else-If Ladder: Dinner Decisions 🍽️
+                    </h1>
+                    <p class="text-slate-700 font-medium mb-4">
+                        What if you have <span class="text-purple-700 font-bold">more than two</span> options? You build
+                        a climbing ladder of questions! It checks from top to bottom until it finds a match.
+                    </p>
+                    <div class="bg-white p-4 rounded-xl border border-purple-200 shadow-sm mb-4">
+                        <p class="text-sm text-slate-600 font-bold mb-2">🌟 Hostel Analogy (Dinner Plan):</p>
+                        <p class="text-sm text-slate-700">1️⃣ Mess menu is good? $\rightarrow$ <strong>Eat in
+                                Mess</strong><br>2️⃣ Else if it's average? $\rightarrow$ <strong>Canteen
+                                Samosa</strong><br>3️⃣ Else? $\rightarrow$ <strong>Zomato Delivery!</strong></p>
+                    </div>
+                    <div class="code-box text-xs space-y-1.5 shadow-lg">
+                        <div><span class="text-pink-400">if</span> (rating >= <span class="text-orange-400">8</span>)
+                            &#123;</div>
+                        <div class="pl-4 text-emerald-300">printf(<span class="text-yellow-200">"Mess Food\n"</span>);
+                        </div>
+                        <div>&#125; <span class="text-pink-400">else if</span> (rating >= <span
+                                class="text-orange-400">5</span>) &#123;</div>
+                        <div class="pl-4 text-amber-300">printf(<span class="text-yellow-200">"Canteen\n"</span>);</div>
+                        <div>&#125; <span class="text-pink-400">else</span> &#123;</div>
+                        <div class="pl-4 text-rose-300">printf(<span class="text-yellow-200">"Zomato!\n"</span>);</div>
+                        <div>&#125;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-purple-100">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Next
+                    Slide 🚀</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Logical Operators -->
+        <div class="slide bg-gradient-to-br from-indigo-50 to-blue-50 border-4 border-indigo-200" id="slide-6">
+            <div class="flex justify-between items-center border-b-2 border-indigo-100 pb-4">
+                <span
+                    class="bg-indigo-200 text-indigo-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    6 of 9</span>
+                <span class="text-sm font-bold text-indigo-600">Logical Operators (AND/OR)</span>
+            </div>
+
+            <div class="my-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-900 fun-font mb-4 leading-tight">
+                        Logic Operators: Combining Rules! 🧠
+                    </h1>
+                    <p class="text-slate-700 font-medium mb-4 text-lg">
+                        You can check multiple conditions at once using <code
+                            class="font-bold text-indigo-700">&&</code> (AND) or <code
+                            class="font-bold text-indigo-700">||</code> (OR).
+                    </p>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-200 shadow-sm mb-4 space-y-3">
+                        <div class="bg-indigo-50 p-2 rounded border border-indigo-100">
+                            <p class="font-bold text-indigo-900">AND <code class="bg-indigo-200 px-1 rounded">&&</code>
+                            </p>
+                            <p class="text-sm text-slate-700"><strong>Both</strong> must be true! <br><span
+                                    class="italic text-xs">"If I have a proxy friend AND the prof doesn't check faces
+                                    $\rightarrow$ Sleep in."</span></p>
+                        </div>
+                        <div class="bg-blue-50 p-2 rounded border border-blue-100">
+                            <p class="font-bold text-blue-900">OR <code class="bg-blue-200 px-1 rounded">||</code></p>
+                            <p class="text-sm text-slate-700"><strong>Only one</strong> needs to be true! <br><span
+                                    class="italic text-xs">"If I have a fever OR I have an assignment due $\rightarrow$
+                                    Skip class."</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-box text-sm space-y-2 shadow-lg h-full flex flex-col justify-center">
+                    <div class="text-slate-400 text-xs">// AND Operator (&&)</div>
+                    <div><span class="text-pink-400">if</span> (has_proxy == <span class="text-orange-400">1</span>
+                        <span class="text-indigo-400 font-bold">&&</span> prof_strict == <span
+                            class="text-orange-400">0</span>) &#123;
+                    </div>
+                    <div class="pl-4 text-emerald-300">printf(<span class="text-yellow-200">"Zzzzz... 🛌\n"</span>);
+                    </div>
+                    <div>&#125;</div>
+                    <br>
+                    <div class="text-slate-400 text-xs">// OR Operator (||)</div>
+                    <div><span class="text-pink-400">if</span> (is_sick == <span class="text-orange-400">1</span> <span
+                            class="text-indigo-400 font-bold">||</span> overslept == <span
+                            class="text-orange-400">1</span>) &#123;</div>
+                    <div class="pl-4 text-rose-300">printf(<span class="text-yellow-200">"Can't make it to class!
+                            🏃‍♂️\n"</span>);</div>
+                    <div>&#125;</div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-indigo-100">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Next
+                    Slide 🚀</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: The Switch Statement -->
+        <div class="slide bg-gradient-to-br from-rose-50 to-orange-50 border-4 border-rose-200" id="slide-7">
+            <div class="flex justify-between items-center border-b-2 border-rose-100 pb-4">
+                <span
+                    class="bg-rose-200 text-rose-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    7 of 9</span>
+                <span class="text-sm font-bold text-rose-600">The "Switch" Statement</span>
+            </div>
+
+            <div class="my-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-4">
+                <div
+                    class="order-2 md:order-1 bg-white rounded-2xl shadow-xl overflow-hidden border border-rose-200 h-full flex flex-col">
+                    <div
+                        class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
+                        <span>Interactive Compiler (Try removing 'break'!)</span>
+                    </div>
+                    <iframe
+                        src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20vending_choice%20%3D%202%3B%0A%20%20%20%20%0A%20%20%20%20switch%20(vending_choice)%20%7B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Dispensing%20Chips%20%F0%9F%A5%94%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Dispensing%20Red%20Bull%20%F0%9F%A5%A4%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%203%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Dispensing%20Coffee%20%E2%98%95%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Invalid!%20Takes%20your%20money%20anyway.%20%F0%9F%92%B8%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
+                        width="100%" height="100%" style="min-height: 400px; border:0;"></iframe>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-rose-900 fun-font mb-4 leading-tight">
+                        The Switch: Vending Machine 🍫
+                    </h1>
+                    <p class="text-slate-700 font-medium mb-4">
+                        When you want to pick an exact choice from a clean menu without writing long `else if` ladders,
+                        you use a <code class="bg-rose-100 text-rose-900 px-2 py-0.5 rounded font-bold">switch</code>
+                        statement!
+                    </p>
+                    <div class="bg-white p-4 rounded-xl border border-rose-200 shadow-sm mb-4">
+                        <p class="text-sm text-slate-600 font-bold mb-2">🌟 Hostel Analogy (Vending Machine):</p>
+                        <p class="text-sm text-slate-700 italic">Push Button 1 for Chips, Button 2 for Red Bull.
+                            <br><br><span class="text-rose-600 font-bold">Crucial:</span> Don't forget your <code
+                                class="font-bold">break;</code> or you'll accidentally execute all the cases below it
+                            (like paying for chips but getting coffee poured on them)!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-rose-100">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-rose-500 hover:bg-rose-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Next
+                    Slide 🚀</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: Playground / Code Map -->
+        <div class="slide bg-gradient-to-br from-indigo-50 to-blue-50 border-4 border-indigo-200" id="slide-8">
+            <div class="flex justify-between items-center border-b-2 border-indigo-100 pb-4">
+                <span
+                    class="bg-indigo-200 text-indigo-800 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    8 of 9</span>
+                <span class="text-sm font-bold text-indigo-600">The C Playground</span>
+            </div>
+
+            <div class="flex flex-col h-full py-4 space-y-4">
+                <div class="text-center">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-indigo-900 fun-font mb-2">
+                        Your Turn: Write a Hostel Survival Code! 👨‍💻
+                    </h2>
+                    <p class="text-sm text-slate-600">Use any of the conditional statements (`if`, `else`, `switch`) to
+                        write your own logic.</p>
+                </div>
+
+                <div class="flex-grow bg-white rounded-2xl shadow-xl overflow-hidden border border-indigo-200">
+                    <div
+                        class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
+                        <span>main.c</span>
+                    </div>
+                    <iframe
+                        src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20%2F%2F%20Write%20your%20own%20hostel%20survival%20code%20here!%0A%20%20%20%20int%20wifi_speed%20%3D%2010%3B%20%2F%2F%20Speed%20in%20kbps%0A%20%20%20%20%0A%20%20%20%20if%20(wifi_speed%20%3C%2050)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Switching%20to%20mobile%20data...%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Time%20to%20watch%20tutorials%20(or%20Netflix)!%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
+                        width="100%" height="100%" style="min-height: 450px; border:0;"></iframe>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-indigo-100">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="nextSlide()"
+                    class="nav-btn bg-indigo-500 hover:bg-indigo-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Final
+                    Challenge! 🏆</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Summary Challenge -->
+        <div class="slide bg-gradient-to-br from-amber-50 to-yellow-50 border-4 border-amber-300" id="slide-9">
+            <div class="flex justify-between items-center border-b-2 border-amber-200 pb-4">
+                <span
+                    class="bg-amber-300 text-amber-900 text-sm font-bold px-4 py-1.5 rounded-full fun-font tracking-wide">Slide
+                    9 of 9</span>
+                <span class="text-sm font-bold text-amber-700">Master Badge Challenge 🌟</span>
+            </div>
+
+            <div class="my-auto py-2 text-center">
+                <div class="text-5xl mb-3">🎓🎉</div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-amber-900 fun-font mb-2">
+                    You Are Now a Logic Master!
+                </h2>
+                <p class="text-slate-700 font-medium max-w-xl mx-auto mb-6">
+                    You've successfully survived the hostel using C programming logic!
+                </p>
+
+                <div
+                    class="bg-white p-6 rounded-2xl border-2 border-amber-200 shadow-md max-w-2xl mx-auto text-left space-y-3">
+                    <h4 class="font-bold text-amber-900 text-center fun-font text-xl">Quick Survival Cheat Sheet:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
+                            <strong class="flex items-center text-amber-800"><span class="mr-2">🍜</span> If
+                                Statement</strong>
+                            <p class="text-sm text-slate-600 mt-1">Single action based on one condition (Maggi at 2AM).
+                            </p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
+                            <strong class="flex items-center text-amber-800"><span class="mr-2">🔀</span> If-Else
+                                Statement</strong>
+                            <p class="text-sm text-slate-600 mt-1">Plan A or Plan B (Headphones or Speakers).</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
+                            <strong class="flex items-center text-amber-800"><span class="mr-2">🍽️</span> Else-If
+                                Ladder</strong>
+                            <p class="text-sm text-slate-600 mt-1">Checking multiple fallback options (Mess
+                                $\rightarrow$ Canteen $\rightarrow$ Zomato).</p>
+                        </div>
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
+                            <strong class="flex items-center text-amber-800"><span class="mr-2">🍫</span> Switch
+                                Statement</strong>
+                            <p class="text-sm text-slate-600 mt-1">Clean exact match selection (Vending machine
+                                buttons).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-4 border-t-2 border-amber-200">
+                <button onclick="prevSlide()"
+                    class="nav-btn bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-2 rounded-xl fun-font text-lg">Back</button>
+                <button onclick="currentSlide(1)"
+                    class="nav-btn bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-2 rounded-xl shadow-lg fun-font text-lg">Restart
+                    Journey 🔄</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript for Slide Navigation -->
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function nextSlide() {
+            showSlides(slideIndex += 1);
+        }
+
+        function prevSlide() {
+            showSlides(slideIndex -= 1);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = slides.length; }
+            if (n < 1) { slideIndex = 1; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slides[slideIndex - 1].classList.add("active");
+        }
+
+        // Keyboard navigation support (Left/Right arrows)
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'ArrowRight') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+
+</html>
