@@ -209,10 +209,13 @@ int main() {
                     <div
                         class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
                         <span>Interactive Compiler (Try changing time!)</span>
-                        <div class="flex space-x-1">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="runCode(this.closest('.slide').id)" class="bg-green-500 hover:bg-green-600 text-white font-bold px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Run Code ▶️</button>
+                            <div class="flex space-x-1 hidden sm:flex">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
                         </div>
                     </div>
                     <!-- Using JDoodle Embed for execution -->
@@ -246,6 +249,7 @@ int main() {
                     <div
                         class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
                         <span>Interactive Compiler (Change roommate status)</span>
+                        <button onclick="runCode(this.closest('.slide').id)" class="bg-green-500 hover:bg-green-600 text-white font-bold px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Run Code ▶️</button>
                     </div>
                     <iframe
                         src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20roommate_sleeping%20%3D%201%3B%20%2F%2F%201%20is%20True%2C%200%20is%20False%0A%20%20%20%20%0A%20%20%20%20if%20(roommate_sleeping%20%3D%3D%201)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Use%20headphones!%20%F0%9F%8E%A7%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Blast%20the%20speakers!%20%F0%9F%94%8A%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
@@ -374,6 +378,7 @@ int main() {
                     <div
                         class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
                         <span>Interactive Compiler</span>
+                        <button onclick="runCode(this.closest('.slide').id)" class="bg-green-500 hover:bg-green-600 text-white font-bold px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Run Code ▶️</button>
                     </div>
                     <iframe
                         src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20warden_on_floor%20%3D%201%3B%0A%20%20%20%20int%20door_unlocked%20%3D%201%3B%20%2F%2F%20Try%20changing%20to%200%0A%20%20%20%20%0A%20%20%20%20if%20(warden_on_floor%20%3D%3D%201)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22ALERT%3A%20Warden%20detected!%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20if%20(door_unlocked%20%3D%3D%201)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Hide%20the%20kettle%20and%20iron%20FAST!!%20%F0%9F%9A%A8%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Door%20is%20locked.%20Act%20asleep.%20%F0%9F%A4%AB%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Coast%20is%20clear.%20Game%20on!%20%F0%9F%8E%AE%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
@@ -405,6 +410,7 @@ int main() {
                     <div
                         class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
                         <span>Interactive Compiler</span>
+                        <button onclick="runCode(this.closest('.slide').id)" class="bg-green-500 hover:bg-green-600 text-white font-bold px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Run Code ▶️</button>
                     </div>
                     <iframe
                         src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20mess_menu_rating%20%3D%202%3B%20%2F%2F%2010%20is%20best%2C%201%20is%20worst%0A%20%20%20%20%0A%20%20%20%20if%20(mess_menu_rating%20%3E%3D%208)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Eat%20in%20the%20mess!%20%F0%9F%A5%98%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20if%20(mess_menu_rating%20%3E%3D%205)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Go%20to%20the%20canteen.%20%F0%9F%A5%AA%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Order%20from%20Zomato!%20%F0%9F%9B%B5%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
@@ -566,6 +572,7 @@ int main() {
                     <div
                         class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
                         <span>Interactive Compiler (Try removing 'break'!)</span>
+                        <button onclick="runCode(this.closest('.slide').id)" class="bg-green-500 hover:bg-green-600 text-white font-bold px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Run Code ▶️</button>
                     </div>
                     <iframe
                         src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20int%20vending_choice%20%3D%202%3B%0A%20%20%20%20%0A%20%20%20%20switch%20(vending_choice)%20%7B%0A%20%20%20%20%20%20%20%20case%201%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Dispensing%20Chips%20%F0%9F%A5%94%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Dispensing%20Red%20Bull%20%F0%9F%A5%A4%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20case%203%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Dispensing%20Coffee%20%E2%98%95%5Cn%22)%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20break%3B%0A%20%20%20%20%20%20%20%20default%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20printf(%22Invalid!%20Takes%20your%20money%20anyway.%20%F0%9F%92%B8%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
@@ -644,6 +651,7 @@ int main() {
                     <div
                         class="bg-slate-800 text-slate-300 text-xs py-2 px-4 font-mono flex justify-between items-center">
                         <span>main.c</span>
+                        <button onclick="runCode(this.closest('.slide').id)" class="bg-green-500 hover:bg-green-600 text-white font-bold px-3 py-1 rounded transition-colors shadow-sm cursor-pointer">Run Code ▶️</button>
                     </div>
                     <iframe
                         src="https://onecompiler.com/embed/c?code=%23include%20%3Cstdio.h%3E%0A%0Aint%20main()%20%7B%0A%20%20%20%20%2F%2F%20Write%20your%20own%20hostel%20survival%20code%20here!%0A%20%20%20%20int%20wifi_speed%20%3D%2010%3B%20%2F%2F%20Speed%20in%20kbps%0A%20%20%20%20%0A%20%20%20%20if%20(wifi_speed%20%3C%2050)%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Switching%20to%20mobile%20data...%5Cn%22)%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20printf(%22Time%20to%20watch%20tutorials%20(or%20Netflix)!%5Cn%22)%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20return%200%3B%0A%7D&hideLanguageSelection=true&hideNew=true"
@@ -767,14 +775,14 @@ int main() {
                 iframe.style.opacity = '0.5';
                 setTimeout(() => iframe.style.opacity = '1', 300);
                 
-                let baseUrl = "https://onecompiler.com/embed/c?hideLanguageSelection=true&hideNew=true&code=";
+                let baseUrl = "https://onecompiler.com/embed/c?hideLanguageSelection=true&hideNew=true&listenToEvents=true&code=";
                 iframe.src = baseUrl + encodeURIComponent(codeText);
                 
                 // Show a small notification
                 let btn = slide.querySelector('button[onclick*="loadBuggyCode"]');
                 if (btn) {
                     let originalText = btn.innerText;
-                    btn.innerText = "Loaded! Scroll down for Run button 👇";
+                    btn.innerText = "Loaded! Click Run Code ▶️";
                     btn.classList.replace("bg-red-500", "bg-green-500");
                     
                     setTimeout(() => {
@@ -784,6 +792,24 @@ int main() {
                 }
             }
         }
+
+        // Function to run code in the iframe
+        function runCode(slideId) {
+            let slide = document.getElementById(slideId);
+            let iframe = slide.querySelector('iframe');
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.postMessage({ eventType: 'triggerRun' }, "*");
+            }
+        }
+
+        // Add listenToEvents to all existing iframes on load
+        window.onload = function() {
+            document.querySelectorAll('iframe[src*="onecompiler.com/embed"]').forEach(iframe => {
+                if (!iframe.src.includes('listenToEvents=true')) {
+                    iframe.src = iframe.src + "&listenToEvents=true";
+                }
+            });
+        };
     </script>
 </body>
 
